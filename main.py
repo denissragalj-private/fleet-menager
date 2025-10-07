@@ -12,6 +12,10 @@ FILE_PATH = 'sample_data/trucks_sample_eu.json'
 
 #region FUNKCIJE
 
+def ocisti_ekran():
+    import os
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def save_to_json(data: List):
     try:
         with open(FILE_PATH, 'w') as file_writer:
@@ -32,6 +36,8 @@ def load_from_json() -> List:
 
 
 def display_vehicle_data(vehicle: Dict) -> None:
+    # for k, v in vehicle.items():
+    #     pass
     print()
     print(vehicle["id"])
     print(vehicle["vin"])
@@ -59,6 +65,7 @@ def display_vehicle_data(vehicle: Dict) -> None:
 def display_all_vehicles(data: List):
     for truck in data:
         display_vehicle_data(truck)
+
 
 
 def input_new_vehicle(data: List):
@@ -101,7 +108,7 @@ data = load_from_json()
 # print(yesterday)
 
 # print(dt.now() - yesterday)
-
+ocisti_ekran()
 today = dt.strptime('2025-10-07 15:30:00', '%Y-%m-%d %H:%M:%S')
 today = dt.strptime('07-10-2025 15:30:00', '%d-%m-%Y %H:%M:%S')
 today = dt.strptime('10-07-2025---15:30:00', '%m-%d-%Y---%H:%M:%S')
