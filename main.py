@@ -52,7 +52,7 @@ def display_vehicle_data(vehicle: Dict) -> None:
     print(vehicle["gvw_kg"])
     print(vehicle["payload_kg"])
     print(vehicle["length_m"])
-    print(vehicle["width_m"])
+    print(vehicle["width_m"]) 
     print(vehicle["height_m"])
     print(vehicle["purchase_date"])
     print(vehicle["registration_date"])
@@ -65,7 +65,6 @@ def display_vehicle_data(vehicle: Dict) -> None:
 def display_all_vehicles(data: List):
     for truck in data:
         display_vehicle_data(truck)
-
 
 
 def input_new_vehicle(data: List):
@@ -95,10 +94,24 @@ def input_new_vehicle(data: List):
 
     save_to_json(data)
 
+
+
+def display_menu():
+    ocisti_ekran()
+    print('1️⃣ Ispis svih vozila 🚛')
+    print('2️⃣ Ispis detalja jednog vozila 📋')
+    print('3️⃣ Dodavanje novog vozila ➕')
+    print('0️⃣ Izlaz 🚪')
+    choice = input('Izaberite opciju: ')
+    return choice
+
 #endregion
 
-
+#region LOAD DATA
 data = load_from_json()
+
+#endregion
+
 # print(f'Datum kupovine: {data[0]['purchase_date']}')
 # print(f'Datum registracije: {data[0]['registration_date']}')
 
@@ -118,3 +131,31 @@ purchase_date = dt.strptime(data[0]['purchase_date'], '%Y-%m-%d')
 print(purchase_date.strftime('%a %A %b %B %d.%m.%Y.'))
 registration_date = dt.strptime(data[0]['registration_date'], '%Y-%m-%d')
 print(registration_date.strftime('%A, %dth of %B %Y - %H:%M:%S'))
+
+
+
+#region MAIN
+
+
+while True:
+    choice =display_menu()
+    if choice == '1':
+        display_all_vehicles(data)
+        input('Pritisnite Enter za nastavak...')
+    elif choice == '2':
+        vehicle_id = input('Unesite ID vozila: ')
+        vehicle = next((v for v in data if v['id'] == vehicle_id), None)
+        if vehicle:
+            display_vehicle_data(vehicle)
+        else:
+            print('Vozilo nije pronadeno.')
+        input('Pritisnite Enter za nastavak...')
+    elif choice == '3':
+        input_new_vehicle(data)
+        input('Pritisnite Enter za nastavak...')
+    elif choice == '0':
+        print('Izlaz iz programa.')
+        break
+    else:
+        print('Nepoznata opcija. Molimo pokušajte ponovo.')
+#endregion

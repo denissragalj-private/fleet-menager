@@ -31,29 +31,31 @@ def save_to_json(data: List) -> None:
     
 
 def display_vehicle_data(vehicle: Dict) -> None:
-    print()
-    print(f'ID: {vehicle["id"]}')
-    print(f'Broj šasije: {vehicle["vin"]}') # VIN ili na hrv. broj sasiije
-    print(f'Proizvođač: {vehicle["make"]}')
-    print(f'Model: {vehicle["model"]}')
-    print(f'Godina: {vehicle["year"]}')
-    print(f'Tip: {vehicle["type"]}')
-    print(f'Broj osovina: {vehicle["axle_config"]}')
-    print(f'Euro standard: {vehicle["euro_standard"]}')
-    print(f'Snaga motora (kW): {vehicle["engine_power_kw"]}')
-    print(f'Gorivo: {vehicle["fuel"]}')
-    print(f'GVW (kg): {vehicle["gvw_kg"]}')
-    print(f'Payload (kg): {vehicle["payload_kg"]}')
-    print(f'Dužina (m): {vehicle["length_m"]}')
-    print(f'Širina (m): {vehicle["width_m"]}')
-    print(f'Visina (m): {vehicle["height_m"]}')
-    print(f'Datum kupovine: {vehicle["purchase_date"]}')
-    print(f'Datum registracije: {vehicle["registration_date"]}')
-    print(f'Kod države: {vehicle["country_code"]}')
-    print(f'Registarska oznaka: {vehicle["license_plate"]}')
-    print(f'Boja: {vehicle["color"]}')
-    print()
-
+    field_width = 20  # širina polja za nazive
+    value_width = 40  # širina polja za vrijednosti
+    
+    print("\n" + "=" * (field_width + value_width))
+    print(f"{'ID:':<{field_width}}{vehicle['id']:>{value_width}}")
+    print(f"{'Broj šasije:':<{field_width}}{vehicle['vin']:>{value_width}}")
+    print(f"{'Proizvođač:':<{field_width}}{vehicle['make']:>{value_width}}")
+    print(f"{'Model:':<{field_width}}{vehicle['model']:>{value_width}}")
+    print(f"{'Godina:':<{field_width}}{vehicle['year']:>{value_width}}")
+    print(f"{'Tip:':<{field_width}}{vehicle['type']:>{value_width}}")
+    print(f"{'Broj osovina:':<{field_width}}{vehicle['axle_config']:>{value_width}}")
+    print(f"{'Euro standard:':<{field_width}}{vehicle['euro_standard']:>{value_width}}")
+    print(f"{'Snaga motora (kW):':<{field_width}}{vehicle['engine_power_kw']:>{value_width}}")
+    print(f"{'Gorivo:':<{field_width}}{vehicle['fuel']:>{value_width}}")
+    print(f"{'GVW (kg):':<{field_width}}{vehicle['gvw_kg']:>{value_width}}")
+    print(f"{'Payload (kg):':<{field_width}}{vehicle['payload_kg']:>{value_width}}")
+    print(f"{'Dužina (m):':<{field_width}}{vehicle['length_m']:>{value_width}}")
+    print(f"{'Širina (m):':<{field_width}}{vehicle['width_m']:>{value_width}}")
+    print(f"{'Visina (m):':<{field_width}}{vehicle['height_m']:>{value_width}}")
+    print(f"{'Datum kupovine:':<{field_width}}{vehicle['purchase_date']:>{value_width}}")
+    print(f"{'Datum registracije:':<{field_width}}{vehicle['registration_date']:>{value_width}}")
+    print(f"{'Kod države:':<{field_width}}{vehicle['country_code']:>{value_width}}")
+    print(f"{'Registarska oznaka:':<{field_width}}{vehicle['license_plate']:>{value_width}}")
+    print(f"{'Boja:':<{field_width}}{vehicle['color']:>{value_width}}")
+    print("=" * (field_width + value_width) + "\n")
 
 def display_all_vehicles(data: List): # prikaz svih vozila
     for truck in data:              # prolazak kroz sva vozila
